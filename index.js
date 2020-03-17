@@ -6,9 +6,44 @@ let chalkPipe = require('chalk-pipe');
 var questions = [
     {
       type: 'input',
-      name: 'first_name',
-      message: "What's your first name"
-    },]
+      name: 'user_name',
+      message: "What's your Github username"
+    },
+    {
+        type: 'input',
+        name: 'title',
+        message: "What is the title of your project?"
+    },
+    {
+        type: 'input',
+        name: 'description',
+        message: "Please write a short description of your project"
+    },
+    {
+        type: 'input',
+        name: 'table',
+        message: "Table"
+    },
+    {
+        type: "input",
+        name: "installation",
+        message: "Enter terminal command for installation"
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message: "Please enter a code example"
+    },
+    {
+        type: 'input',
+        name: "license",
+        message: "Which lisence are you using?"
+    },
+    {
+        type:'input',
+        name: "contributing",
+        message: "Who worked on this project?"
+    }]
 
 inquirer.prompt(questions).then(answers => {
     console.log(JSON.stringify(answers, null, '  '));

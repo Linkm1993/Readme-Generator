@@ -47,7 +47,7 @@ var questions = [
 
 inquirer.prompt(questions).then(answers => {
     console.log(JSON.stringify(answers, null, '  '));
-    fs.writeFile('newfile.txt', JSON.stringify(answers), function (err) {
+    fs.writeFile('newfile.txt', JSON.stringify(answers, null, '  '), function (err) {
         if (err) throw err;
         console.log('File is created successfully.');
       })

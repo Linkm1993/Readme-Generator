@@ -22,7 +22,7 @@ var questions = [
     {
         type: 'input',
         name: 'table',
-        message: "Table"
+        message: "Tables"
     },
     {
         type: "input",

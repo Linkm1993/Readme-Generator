@@ -3,6 +3,11 @@ let fs = require('fs');
 let inquirer = require('inquirer');
 let chalkPipe = require('chalk-pipe');
 
+fs.writeFile('newfile.txt', '', function (err) {
+    if (err) throw err;
+    console.log('File is created successfully.');
+  }); 
+
 var questions = [
     {
       type: 'input',
@@ -48,3 +53,8 @@ var questions = [
 inquirer.prompt(questions).then(answers => {
     console.log(JSON.stringify(answers, null, '  '));
       });
+
+      fs.writeFile('newfile.txt', answers, function (err) {
+        if (err) throw err;
+        console.log('File is created successfully.');
+      }); 

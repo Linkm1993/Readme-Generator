@@ -1,11 +1,11 @@
-//Requirments for node modules
-let fs = require('fs');
-let inquirer = require('inquirer');
-let chalkPipe = require('chalk-pipe');
+const fs = require('fs');
+const inquirer = require('inquirer');
+const chalkPipe = require('chalk-pipe');
 const axios = require("axios");
+const util = require('util')
 
 
-var questions = [
+let questions = [
     {
       type: 'input',
       name: 'user_name',

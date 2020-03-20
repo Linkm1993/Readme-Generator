@@ -47,11 +47,11 @@ let questions = [
         message: "Who worked on this project?"
     }]
 
-    let {username} = questions
-    console.log(username)
+
 
     inquirer.prompt(questions).then(answers => {
-        const queryUrl = `https://api.github.com/search/users?q=${username}`;
+        let {username} = answers
+        const queryUrl = `https://api.github.com/users/${username}`;
         axios.get(queryUrl).then( response =>{
             console.log(response)
         })
@@ -59,6 +59,6 @@ let questions = [
 
     fs.writeFile('newfile.txt', JSON.stringify(answers, null, '  '), function (err) {
         if (err) throw err;
-        console.log('File is created successfully.');
+        console.log('File created successfully.');
       })
     })

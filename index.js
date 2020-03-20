@@ -2,8 +2,6 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const chalkPipe = require('chalk-pipe');
 const axios = require("axios");
-const util = require('util')
-
 
 let questions = [
     {
@@ -53,12 +51,18 @@ let questions = [
         let {username} = answers
         const queryUrl = `https://api.github.com/users/${username}`;
         axios.get(queryUrl).then( response =>{
-            console.log(response)
+            let imageURL = response.data.avatar_url
+            let callImage = `[User Avatar](${imageURL})`
+
+            fs.writeFile('README.md', JSON.stringify(answers, null, '  '), function (err) {
+                if (err) throw err;
+                console.log('File created successfully.');
+              })
+            
+            fs.appendFile('README.md', callImage, function (err) {
+                if (err) throw err;
+                console.log('File created successfully.');
+              })
         })
-
-
-    fs.writeFile('newfile.txt', JSON.stringify(answers, null, '  '), function (err) {
-        if (err) throw err;
-        console.log('File created successfully.');
-      })
     })
+

@@ -44,21 +44,45 @@ let questions = [
 
 
     inquirer.prompt(questions).then(answers => {
-        let {username} = answers
+        let username = answers.username
+        let title =answers.title
+        let description = answers.description
+        let installation = answers.installation
+        let usage = answers.usage
+        let license = answers.license
+        let contributing = answers.contributing
+
+        let readmeText = `# ${title} 
+
+### Description
+>${description} 
+
+
+### Table of Contents 
+>[Installation](#Installation) | [Usage](#Usage) | [License](#License) | [Contributors](#Contributors)
+        
+        
+### Installation
+>${installation}
+
+
+### Usage
+>${usage}
+
+
+### License
+>${license}
+        `
+
         const queryUrl = `https://api.github.com/users/${username}`;
         axios.get(queryUrl).then( response =>{
             let imageURL = response.data.avatar_url
-            let callImage = `![User Avatar](${imageURL})`
 
-            fs.writeFile('yourREADME.md', JSON.stringify(answers, null, '  '), function (err) {
+
+            fs.writeFile('yourREADME.md', readmeText, function (err) {
                 if (err) throw err;
                 console.log('File created successfully.');
               })
-            
-            fs.appendFile('yourREADME.md', callImage, function (err) {
-                if (err) throw err;
-                console.log('File created successfully.');
-              })
+
         })
     })
-

@@ -17,7 +17,7 @@ let questions = [
     {
         type: 'input',
         name: 'description',
-        message: "Please write a short description of your project"
+        message: "Write a short description of your project"
     },
 
     {
@@ -28,7 +28,7 @@ let questions = [
     {
         type: 'input',
         name: 'usage',
-        message: "Please enter a code example"
+        message: "Enter a breif explantion of how your code works"
     },
     {
         type: 'list',
@@ -44,6 +44,11 @@ let questions = [
         type:'input',
         name: "contributing",
         message: "Who worked on this project?"
+    },
+    {   type: 'input',
+        name: 'test',
+        message: "Enter terminal command for testing"
+
     }]
 
 
@@ -56,6 +61,7 @@ let questions = [
         let usage = answers.usage
         let license = answers.license
         let contributing = answers.contributing
+        let test = answers.test
 
         let readmeText = `# ${title} 
 
@@ -64,7 +70,7 @@ let questions = [
 
 
 ### Table of Contents 
->[Installation](#Installation) | [Usage](#Usage) | [License](#License) | [Contributors](#Contributors)
+>[Installation](###Installation) | [Usage](###Usage) | [License](###License) | [Contributors](###Contributors) | [Testing](###Testing) | [Questions](###Questions)
         
         
 ### Installation
@@ -77,12 +83,22 @@ let questions = [
 
 ### License
 >${license}
+
+
+###Contributing
+>${contributing}
+
+
+###Testing
+>${test}
+
+
+###Questions
         `
 
         const queryUrl = `https://api.github.com/users/${username}`;
         axios.get(queryUrl).then( response =>{
-            let imageURL = response.data.avatar_url
-
+            console.log(response)
 
             fs.writeFile('yourREADME.md', readmeText, function (err) {
                 if (err) throw err;

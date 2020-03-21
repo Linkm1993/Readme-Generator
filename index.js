@@ -31,9 +31,14 @@ let questions = [
         message: "Please enter a code example"
     },
     {
-        type: 'input',
+        type: 'list',
         name: "license",
-        message: "Which lisence are you using?"
+        message: "Which lisence are you using?",
+        choices: [
+            "MIT",
+            "Unlicense",
+            "BSD-2-Clause Plus Patent License"
+          ]
     },
     {
         type:'input',

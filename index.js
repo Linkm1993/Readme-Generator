@@ -19,11 +19,7 @@ let questions = [
         name: 'description',
         message: "Please write a short description of your project"
     },
-    {
-        type: 'input',
-        name: 'table',
-        message: "Tables"
-    },
+
     {
         type: "input",
         name: "installation",
@@ -52,14 +48,14 @@ let questions = [
         const queryUrl = `https://api.github.com/users/${username}`;
         axios.get(queryUrl).then( response =>{
             let imageURL = response.data.avatar_url
-            let callImage = `[User Avatar](${imageURL})`
+            let callImage = `![User Avatar](${imageURL})`
 
-            fs.writeFile('README.md', JSON.stringify(answers, null, '  '), function (err) {
+            fs.writeFile('yourREADME.md', JSON.stringify(answers, null, '  '), function (err) {
                 if (err) throw err;
                 console.log('File created successfully.');
               })
             
-            fs.appendFile('README.md', callImage, function (err) {
+            fs.appendFile('yourREADME.md', callImage, function (err) {
                 if (err) throw err;
                 console.log('File created successfully.');
               })

@@ -85,7 +85,7 @@ let questions = [
 >${license}
 
 
-### Contributing
+### Contributors
 >${contributing}
 
 

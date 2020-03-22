@@ -65,8 +65,6 @@ let questions = [
 
         let readmeText = 
         `# ${title} 
-
-
 ### Description
 >${description} 
 
@@ -74,7 +72,7 @@ let questions = [
 ### Table of Contents 
 >[Installation](###Installation) | [Usage](###Usage) | [License](###License) | [Contributors](###Contributors) | [Testing](###Testing) | [Questions](###Questions)
         
-        
+
 ### Installation
 >${installation}
 
@@ -96,15 +94,16 @@ let questions = [
 
 
 ### Questions
-[![](https://img.shields.io/badge/github-${username}-blue?)](https://www.github.com/${username})
-        `
+`
 
         const queryUrl = `https://api.github.com/users/${username}/events/public`;
         axios.get(queryUrl).then( response =>{
             let userimage = response.data[0].actor.avatar_url
             let passImage = `![](${userimage})`
             let userEmail = response.data[0].payload.commits[0].author.email
-            console.log(userEmail)
+            let emailButton = `>![](https://img.shields.io/badge/Email-${userEmail}-blue?)](mailto:${userEmail})` 
+            let userNameButton = `>![](https://img.shields.io/badge/github-${username}-blue?)](https://www.github.com/${username})`
+
             
 
             fs.writeFile('yourREADME.md', readmeText, function (err) {
@@ -112,6 +111,11 @@ let questions = [
                 console.log('File created successfully.');
               })
 
+            fs.appendFile('yourREADME.md', userNameButton + "\n" + emailButton, function (err) {
+                if (err) throw err;
+                console.log('File created successfully.');
+              })
+            
             fs.appendFile('yourREADME.md', "\n" + passImage, function(err) {
                 if (err) throw err;
                 console.log('File created successfully.');

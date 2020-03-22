@@ -101,8 +101,8 @@ let questions = [
             let userimage = response.data[0].actor.avatar_url
             let passImage = `![](${userimage})`
             let userEmail = response.data[0].payload.commits[0].author.email
-            let emailButton = `>![](https://img.shields.io/badge/Email-${userEmail}-blue?)](mailto:${userEmail})` 
-            let userNameButton = `>![](https://img.shields.io/badge/github-${username}-blue?)](https://www.github.com/${username})`
+            let emailButton = `>[![](https://img.shields.io/badge/Email-${userEmail}-blue?)](mailto:${userEmail})` 
+            let userNameButton = `>[![](https://img.shields.io/badge/github-${username}-blue?)](https://www.github.com/${username})`
 
             
 

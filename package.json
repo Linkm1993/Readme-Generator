@@ -1,0 +1,24 @@
+{
+  "name": "readme-generator",
+  "version": "1.0.0",
+  "description": "README generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Linkm1993/Readme-Generator.git"
+  },
+  "author": "Matthew Link",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Linkm1993/Readme-Generator/issues"
+  },
+  "homepage": "https://github.com/Linkm1993/Readme-Generator#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chalk-pipe": "^3.0.0",
+    "inquirer": "^7.1.0"
+  }
+}

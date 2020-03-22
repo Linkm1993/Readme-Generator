@@ -28,7 +28,7 @@ let questions = [
     {
         type: 'input',
         name: 'usage',
-        message: "Enter a breif explantion of how your code works"
+        message: "Enter a brief explantion of how your code works"
     },
     {
         type: 'list',
@@ -63,7 +63,9 @@ let questions = [
         let contributing = answers.contributing
         let test = answers.test
 
-        let readmeText = `# ${title} 
+        let readmeText = 
+        `# ${title} 
+
 
 ### Description
 >${description} 
@@ -85,22 +87,30 @@ let questions = [
 >${license}
 
 
-###Contributing
+### Contributing
 >${contributing}
 
 
-###Testing
+### Testing
 >${test}
 
 
-###Questions
+### Questions
+>* ![](https://img.shields.io/badge/Github-${username}-blue) 
         `
 
         const queryUrl = `https://api.github.com/users/${username}`;
         axios.get(queryUrl).then( response =>{
-            console.log(response)
+            let userimage = `![](${response.data.avatar_url})`
+            appendGithub =
+            `>* Github Avatar: ${userimage}`
 
             fs.writeFile('yourREADME.md', readmeText, function (err) {
+                if (err) throw err;
+                console.log('File created successfully.');
+              })
+
+            fs.appendFile('yourREADME.md', "\n" + appendGithub, function(err) {
                 if (err) throw err;
                 console.log('File created successfully.');
               })

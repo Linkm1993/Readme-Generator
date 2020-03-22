@@ -99,9 +99,12 @@ let questions = [
 [![](https://img.shields.io/badge/github-${username}-blue?)](https://www.github.com/${username})
         `
 
-        const queryUrl = `https://api.github.com/users/${username}`;
+        const queryUrl = `https://api.github.com/users/${username}/events/public`;
         axios.get(queryUrl).then( response =>{
-            let userimage = `![](${response.data.avatar_url})`
+            let userimage = response.data[0].actor.avatar_url
+            let passImage = `![](${userimage})`
+            let userEmail = response.data[0].payload.commits[0].author.email
+            console.log(userEmail)
             
 
             fs.writeFile('yourREADME.md', readmeText, function (err) {
@@ -109,7 +112,7 @@ let questions = [
                 console.log('File created successfully.');
               })
 
-            fs.appendFile('yourREADME.md', "\n" + userimage, function(err) {
+            fs.appendFile('yourREADME.md', "\n" + passImage, function(err) {
                 if (err) throw err;
                 console.log('File created successfully.');
               })
